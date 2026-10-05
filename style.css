@@ -1,0 +1,74 @@
+/* ===== WARNA (ubah di sini) ===== */
+:root{--navy:#0b2559;--blue:#1e5bd8;--ink:#14213d;
+  font-family:system-ui,"Segoe UI",Roboto,sans-serif}
+.Science{--c:#2f6fed}.Geography{--c:#1f9d55}.History{--c:#f2c200;color:#1b2a49!important}
+.Technology{--c:#e5383b}.Culture{--c:#8e44ad}.Civics{--c:#f08a24}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#fff;background:linear-gradient(160deg,var(--navy),#123a8a)}
+h1{font-size:clamp(2.6rem,10vw,5rem);margin:0;letter-spacing:3px}
+.screen{display:none;min-height:100vh;padding:16px}
+.screen.active{display:block}
+#menu,#setup{text-align:center;padding-top:9vh}
+.tag{font-size:1.3rem;font-weight:700;color:#9cc2ff;margin:6px 0 18px}
+
+.btn{display:block;margin:12px auto;min-width:240px;padding:14px 22px;border:0;border-radius:14px;
+  background:#fff;color:var(--navy);font:700 1rem inherit;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,.25);transition:transform .15s}
+.btn:hover:not(:disabled){transform:translateY(-2px)}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.sel{outline:4px solid #f2c200}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.counts{display:flex;flex-wrap:wrap;justify-content:center;gap:0 12px}
+#nameInputs input{display:block;margin:8px auto;width:240px;padding:11px;border-radius:10px;border:0;font-size:1rem}
+
+/* ===== GAME ===== */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:16px;max-width:1100px;margin:auto}
+#board{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;padding:8px;border-radius:18px;background:rgba(255,255,255,.12)}
+.tile{position:relative;aspect-ratio:1;border-radius:10px;background:var(--c);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:700;font-size:clamp(.6rem,1.6vw,.9rem);box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.tile small{font-size:clamp(.55rem,1.5vw,.85rem)}
+.tile.special{box-shadow:inset 0 0 0 3px #fff}
+.tile.edge{background:#fff;color:var(--navy)}
+.pawns{position:absolute;bottom:2px;left:0;right:0;display:flex;justify-content:center;gap:2px}
+.pawn{width:clamp(10px,2vw,16px);aspect-ratio:1;border-radius:50%;border:2px solid #fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.5);animation:hop .3s}
+@keyframes hop{50%{transform:translateY(-8px)}}
+
+aside{text-align:center}
+.turn{font-size:1.3rem;font-weight:800;margin-bottom:8px}
+#dice{font-size:4.5rem;line-height:1}
+#dice.roll{animation:spin .5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pl{display:flex;justify-content:space-between;align-items:center;margin:8px 0;padding:10px 14px;text-align:left;
+  background:rgba(255,255,255,.12);border-radius:12px;border:3px solid transparent}
+.pl.active{border-color:#f2c200;background:rgba(255,255,255,.25)}
+.pl span{font-size:.85rem;opacity:.9}
+
+/* ===== MODAL ===== */
+.modal{position:fixed;inset:0;background:rgba(5,15,45,.75);display:flex;align-items:center;justify-content:center;padding:12px;z-index:9}
+.hidden{display:none}
+.card{background:#fff;color:var(--ink);width:min(520px,100%);max-height:92vh;overflow:auto;
+  border-radius:20px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.4);animation:flip .4s}
+@keyframes flip{from{transform:rotateX(70deg) scale(.9);opacity:0}}
+.card h2{margin:0 0 8px}
+.card .btn{box-shadow:0 3px 0 rgba(0,0,0,.2);border:2px solid var(--navy);min-width:0;width:100%}
+.card .btn.primary{border-color:var(--blue)}
+.qhead{display:inline-block;background:var(--c);color:#fff;padding:5px 12px;border-radius:20px;font-weight:700}
+.q{font-size:1.15rem;font-weight:700}
+.hint{color:#5a6785;font-size:.9rem}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border:2px solid #c9d6f2;
+  border-radius:12px;background:#f4f7ff;color:var(--ink);font-size:1rem;cursor:pointer}
+.opt:hover:not(:disabled){background:#e0e9ff}
+.opt.right{background:#c9f2d6;border-color:#1f9d55}
+.opt.wrong{background:#ffd3d3;border-color:#e5383b;animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.delta{font-size:2rem;font-weight:800;animation:pop .6s}
+.delta.plus{color:#1f9d55}.delta.minus{color:#e5383b}
+@keyframes pop{from{transform:scale(.3);opacity:0}60%{transform:scale(1.25)}}
+.bar{height:12px;border-radius:6px;background:#dde5f7;margin:2px 0 8px}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--c)}
+.timer{font-size:2.5rem;font-weight:800;text-align:center;color:var(--blue)}
+
+@media(max-width:800px){.layout{grid-template-columns:1fr}.btn{min-width:200px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMART RACE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- MENU UTAMA -->
+<section id="menu" class="screen active">
+  <h1>SMART RACE</h1>
+  <p class="tag">ROLL • ANSWER • WIN</p>
+  <p>Game edukasi pengetahuan umum untuk siswa SMA/SMK.</p>
+  <button class="btn primary" id="btnStart">MULAI PERMAINAN</button>
+  <button class="btn" id="btnHow">CARA BERMAIN</button>
+  <button class="btn" id="btnAbout">TENTANG GAME</button>
+</section>
+
+<!-- PILIH PEMAIN -->
+<section id="setup" class="screen">
+  <h2>Pilih Jumlah Pemain</h2>
+  <div class="counts">
+    <button class="btn count" data-n="2">2 PEMAIN</button>
+    <button class="btn count" data-n="3">3 PEMAIN</button>
+    <button class="btn count" data-n="4">4 PEMAIN</button>
+  </div>
+  <div id="nameInputs"></div>
+  <button class="btn primary" id="btnGo">MULAI</button>
+  <button class="btn" id="btnBack">KEMBALI</button>
+</section>
+
+<!-- PERMAINAN -->
+<section id="game" class="screen">
+  <div class="layout">
+    <div id="board"></div>
+    <aside>
+      <div class="turn" id="turn"></div>
+      <div id="dice">🎲</div>
+      <button class="btn primary" id="rollBtn">🎲 LEMPAR DADU</button>
+      <div id="players"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- MODAL (pertanyaan, feedback, hasil akhir) -->
+<div id="modal" class="modal hidden"><div class="card" id="modalBody"></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
